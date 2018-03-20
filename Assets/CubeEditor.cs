@@ -7,14 +7,14 @@ using UnityEngine;
 public class CubeEditor : MonoBehaviour {
     [Range(1f,20f)]
     [SerializeField] float GridSize = 10f;
-    TextMesh TextOnTopOfCube;
+    TextMesh CubeLabel;
     private void Start()
     {
         
     }
     private void Update()
     {
-        PrintingCoordinatesOnCubes();
+        PrintingCoordinates();
         HanddleCubesPositioning();
     }
 
@@ -26,15 +26,17 @@ public class CubeEditor : MonoBehaviour {
         transform.position = new Vector3(NewPosition.x, 0f, NewPosition.z);
     }
 
-    private void PrintingCoordinatesOnCubes()
+    private void PrintingCoordinates()
     {
-        TextOnTopOfCube = gameObject.GetComponentInChildren<TextMesh>();
+        CubeLabel = gameObject.GetComponentInChildren<TextMesh>();
        
-        if (TextOnTopOfCube != null)
+        if (CubeLabel != null)
         {
             string CoordinatesX = Mathf.RoundToInt(transform.position.x / GridSize).ToString();
             string CoordinatesZ = Mathf.RoundToInt(transform.position.z / GridSize).ToString();
-            TextOnTopOfCube.text = "[" + CoordinatesX + "," + CoordinatesZ + "]";
+            CubeLabel.text = "[" + CoordinatesX + "," + CoordinatesZ + "]";
+            //changing name of gameobject acoarding to coardinates.
+            gameObject.name = "Waypoint:(" + CoordinatesX + "," + CoordinatesZ + ")";
         }
     }
 }
