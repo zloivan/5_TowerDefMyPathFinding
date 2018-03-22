@@ -11,20 +11,19 @@ public class EnemyMovement : MonoBehaviour {
 	void Start ()
     {
         StartCoroutine(MoveThrowWaypoints());
-      
+        print("End of patroll");
     }
 
     private IEnumerator MoveThrowWaypoints()
     {
+        print("Patrol starts at: " + waypoints[0].name);
         foreach (var item in waypoints)
         {
             transform.position = item.transform.position;
             yield return new WaitForSeconds(EnemyMovementSpeed);
         }
+        print("Finished patrol at :"+waypoints[ waypoints.Count-1].name);
     }
 
-    // Update is called once per frame
-    void Update () {
-		
-	}
+    
 }

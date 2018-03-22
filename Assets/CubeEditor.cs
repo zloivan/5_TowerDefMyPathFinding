@@ -4,13 +4,14 @@ using UnityEngine;
 
 [ExecuteInEditMode]
 [SelectionBase]
+[RequireComponent(typeof(Waypoint))]
 public class CubeEditor : MonoBehaviour {
-    [Range(1f,20f)]
-    [SerializeField] float GridSize = 10f;
-    TextMesh CubeLabel;
-    private void Start()
+    
+    Waypoint waypoint;
+
+    private void Awake()
     {
-        
+        waypoint = GetComponent<Waypoint>();
     }
     private void Update()
     {
@@ -20,23 +21,27 @@ public class CubeEditor : MonoBehaviour {
 
     private void HanddleCubesPositioning()
     {
-        Vector3 NewPosition;
-        NewPosition.x = Mathf.RoundToInt(transform.position.x / GridSize) * GridSize;
-        NewPosition.z = Mathf.RoundToInt(transform.position.z / GridSize) * GridSize;
-        transform.position = new Vector3(NewPosition.x, 0f, NewPosition.z);
+        int gridSize = waypoint.GridSize;
+      
+        transform.position = new Vector3(
+            waypoint.GridPoss.x * waypoint.GridSize,
+            0f,
+            waypoint.GridPoss.y * waypoint.GridSize
+            );
     }
 
     private void PrintingCoordinates()
     {
-        CubeLabel = gameObject.GetComponentInChildren<TextMesh>();
+        int gridSize = waypoint.GridSize;
+
+        TextMesh CubeLabel = gameObject.GetComponentInChildren<TextMesh>();
        
         if (CubeLabel != null)
         {
-            string CoordinatesX = Mathf.RoundToInt(transform.position.x / GridSize).ToString();
-            string CoordinatesZ = Mathf.RoundToInt(transform.position.z / GridSize).ToString();
-            CubeLabel.text = "[" + CoordinatesX + "," + CoordinatesZ + "]";
-            //changing name of gameobject acoarding to coardinates.
-            gameObject.name = "Waypoint:(" + CoordinatesX + "," + CoordinatesZ + ")";
+            string labelText = "[" + waypoint.GridPoss.x.ToString() + "," + waypoint.GridPoss.y.ToString() + "]";
+            CubeLabel.text =labelText;
+            
+            gameObject.name = "Waypoint:" +labelText;
         }
     }
 }
