@@ -18,34 +18,32 @@ public class PathFinder : MonoBehaviour {
 
     private void FindNeighbors(Waypoint waypoint)
     {
-
-        int x = waypoint.GridPoss.x;
-        int y = waypoint.GridPoss.y;
-      
-        Vector2Int[] allSides = new Vector2Int[]
+        Vector2Int[] allSides =
         {
-            new Vector2Int(x, y + 1),
-            new Vector2Int(x, y - 1),
-            new Vector2Int(x + 1, y),
-            new Vector2Int(x - 1, y),
+            Vector2Int.up,
+            Vector2Int.down,
+            Vector2Int.right,
+            Vector2Int.left,
         };
         foreach (var item in allSides)
         {
-            ColorNeighborWaypoint(item);
+
+            try
+            {
+                grid[waypoint.GridPoss + item].ChangeColor(Color.blue);
+            }
+            catch (Exception)
+            {
+
+                
+            }
+            
+           
         }
+        
     }
 
-    private void ColorNeighborWaypoint(Vector2Int newighberWaypoint)
-    {
-        if (grid.ContainsKey(newighberWaypoint))
-        {
-            grid[newighberWaypoint].ChangeColor(Color.blue);
-        }
-        else
-        {
-            print("No neighbor at: "+grid[newighberWaypoint]);
-        }
-    }
+    
 
     private void PaintStartAndEnd()
     {
