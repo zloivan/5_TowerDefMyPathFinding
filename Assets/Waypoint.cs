@@ -29,10 +29,10 @@ public class Waypoint : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        if (isExplored)
-        {
-            this.ChangeColor(colorForExplored);
-        }
+        //if (isExplored)
+        //{
+        //    this.ChangeColor(colorForExplored);
+        //}
 	}
 
     internal void ChangeColor(Color color)
