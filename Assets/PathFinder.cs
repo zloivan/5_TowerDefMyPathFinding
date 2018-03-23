@@ -15,30 +15,27 @@ public class PathFinder : MonoBehaviour
             Vector2Int.left,
     };
     Dictionary<Vector2Int, Waypoint> grid = new Dictionary<Vector2Int, Waypoint>();
-    bool isSearching = true;
+    bool isRuning = true;
     Waypoint searchCenter;
     Queue<Waypoint> queue = new Queue<Waypoint>();
     List<Waypoint> path = new List<Waypoint>();
 
     public List<Waypoint> GetPath()
     {
-        return path;
-    }
-    // Use this for initialization
-    void Start()
-    {
         LoadBlocks();
         PaintStartAndEnd();
-        Pathfind();
-        //FindNeighbors(startPoint);
+        BreathFirst();
+        BuildPath();
+        return path;
     }
+   
 
-    private void Pathfind()
+    private void BreathFirst()
     {
         
         queue.Enqueue(startPoint);
         startPoint.isExplored = true;
-        while (queue.Count > 0 && isSearching)
+        while (queue.Count > 0 && isRuning)
         {
             searchCenter = queue.Dequeue();
             CheckForEndpoint();
@@ -50,47 +47,35 @@ public class PathFinder : MonoBehaviour
     {
         if (searchCenter.GridPoss == endPoint.GridPoss)
         {
-            Debug.LogWarning("End point is reached.");
-            isSearching = false;
-            BuildPath();
+            isRuning = false;
         }
     }
 
     private void BuildPath()
     {
-        //path.Add(endPoint.exploredBy);
        
         Waypoint last = endPoint;
         while (last.GridPoss!=startPoint.GridPoss)
         {
             path.Add(last);
-            print("added to stack:" + last);//todo remove log
             last = last.exploredBy;
         }
         path.Add(startPoint);
         path.Reverse();
-        var enemy=    FindObjectOfType<EnemyMovement>();
-        enemy.enabled = true;
-        foreach (var item in path)
-        {
-            print("My path: "+item); // todo remove log
-        }
+       
+       
     }
 
     private void FindNeighbors()
     {
-        if (!isSearching) { return; }
+        if (!isRuning) { return; }
      
         foreach (var direction in allDirections)
         {
-            var neighborPos = searchCenter.GridPoss + direction;
-            try
+            Vector2Int neighborPos = searchCenter.GridPoss + direction;
+            if (grid.ContainsKey(neighborPos))
             {
                 QueingNeighbors(neighborPos);
-
-            }
-            catch (Exception)
-            {
             }
         }
     }
@@ -98,19 +83,16 @@ public class PathFinder : MonoBehaviour
     private void QueingNeighbors(Vector2Int neighborPos)
     {
         Waypoint neighbor = grid[neighborPos];
-        neighbor.ChangeColor(Color.blue); //todo take away color
+
         if (neighbor.isExplored)
         {
             //do nothing
         }
         else
         {
-
             neighbor.isExplored = true;
             queue.Enqueue(neighbor);
             neighbor.exploredBy = searchCenter;
-            print(neighbor+" explored by: "+neighbor.exploredBy);
-           
         }
     }
 
@@ -133,10 +115,6 @@ public class PathFinder : MonoBehaviour
             {
                 Debug.LogWarning(item.GridPoss + " is found in world more than once.");
             }
-
-
         }
-        print(grid.Count);
-
     }
 }

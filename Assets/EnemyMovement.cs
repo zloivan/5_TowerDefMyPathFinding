@@ -4,27 +4,28 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour {
 
-    [SerializeField] List<Waypoint> waypoints;
+   
     PathFinder pathfinder;
     [SerializeField] float EnemyMovementSpeed=1f;
+    
+
 	// Use this for initialization
 	void Start ()
     {
-        waypoints = FindObjectOfType<PathFinder>().GetPath();
-        StartCoroutine(MoveThrowWaypoints());
-        print("End of patroll");
+        List<Waypoint> path = FindObjectOfType<PathFinder>().GetPath();
+        StartCoroutine(MoveThrowWaypoints(path));
     }
 
-    private IEnumerator MoveThrowWaypoints()
+    private IEnumerator MoveThrowWaypoints(List<Waypoint> path)
     {
-        //print("Patrol starts at: " + waypoints[0].name);//todo delete log
-        foreach (var item in waypoints)
+        
+        foreach (var item in path)
         {
             transform.position = item.transform.position;
             yield return new WaitForSeconds(EnemyMovementSpeed);
         }
-        print("Finished patrol at :"+waypoints[ waypoints.Count-1].name);// todo delete log
+        print("Finished patrol at :" + path[path.Count - 1].name);// todo delete log
     }
 
-    
+
 }
