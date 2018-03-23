@@ -16,8 +16,14 @@ public class PathFinder : MonoBehaviour
     };
     Dictionary<Vector2Int, Waypoint> grid = new Dictionary<Vector2Int, Waypoint>();
     bool isSearching = true;
+    Waypoint searchCenter;
     Queue<Waypoint> queue = new Queue<Waypoint>();
+    List<Waypoint> path = new List<Waypoint>();
 
+    public List<Waypoint> GetPath()
+    {
+        return path;
+    }
     // Use this for initialization
     void Start()
     {
@@ -34,35 +40,54 @@ public class PathFinder : MonoBehaviour
         startPoint.isExplored = true;
         while (queue.Count > 0 && isSearching)
         {
-            var centertPoint = queue.Dequeue();
-            
-            print("Searching from:" + centertPoint); //todo delete log
-            CheckForEndpoint(centertPoint);
-            FindNeighbors(centertPoint);
+            searchCenter = queue.Dequeue();
+            CheckForEndpoint();
+            FindNeighbors();
         }
-        print("Searching is finished."); //todo delete log
     }
 
-    private void CheckForEndpoint(Waypoint center)
+    private void CheckForEndpoint()
     {
-        if (center.GridPoss == endPoint.GridPoss)
+        if (searchCenter.GridPoss == endPoint.GridPoss)
         {
             Debug.LogWarning("End point is reached.");
             isSearching = false;
-
+            BuildPath();
         }
     }
 
-    private void FindNeighbors(Waypoint from)
+    private void BuildPath()
+    {
+        //path.Add(endPoint.exploredBy);
+       
+        Waypoint last = endPoint;
+        while (last.GridPoss!=startPoint.GridPoss)
+        {
+            path.Add(last);
+            print("added to stack:" + last);//todo remove log
+            last = last.exploredBy;
+        }
+        path.Add(startPoint);
+        path.Reverse();
+        var enemy=    FindObjectOfType<EnemyMovement>();
+        enemy.enabled = true;
+        foreach (var item in path)
+        {
+            print("My path: "+item); // todo remove log
+        }
+    }
+
+    private void FindNeighbors()
     {
         if (!isSearching) { return; }
      
         foreach (var direction in allDirections)
         {
-            var neighborPos = from.GridPoss + direction;
+            var neighborPos = searchCenter.GridPoss + direction;
             try
             {
                 QueingNeighbors(neighborPos);
+
             }
             catch (Exception)
             {
@@ -80,9 +105,12 @@ public class PathFinder : MonoBehaviour
         }
         else
         {
+
             neighbor.isExplored = true;
             queue.Enqueue(neighbor);
-            print("Queing :"+neighbor);//todo delete log
+            neighbor.exploredBy = searchCenter;
+            print(neighbor+" explored by: "+neighbor.exploredBy);
+           
         }
     }
 
