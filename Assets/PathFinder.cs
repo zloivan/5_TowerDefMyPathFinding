@@ -3,47 +3,88 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PathFinder : MonoBehaviour {
+public class PathFinder : MonoBehaviour
+{
 
     [SerializeField] Waypoint startPoint, endPoint;
-    
+    Vector2Int[] allDirections =
+     {
+            Vector2Int.up,
+            Vector2Int.right,
+            Vector2Int.down,
+            Vector2Int.left,
+    };
     Dictionary<Vector2Int, Waypoint> grid = new Dictionary<Vector2Int, Waypoint>();
-	// Use this for initialization
-	void Start ()
+    bool isSearching = true;
+    Queue<Waypoint> queue = new Queue<Waypoint>();
+
+    // Use this for initialization
+    void Start()
     {
         LoadBlocks();
         PaintStartAndEnd();
-        FindNeighbors(startPoint);
-	}
+        Pathfind();
+        //FindNeighbors(startPoint);
+    }
 
-    private void FindNeighbors(Waypoint waypoint)
+    private void Pathfind()
     {
-        Vector2Int[] allSides =
+        
+        queue.Enqueue(startPoint);
+        startPoint.isExplored = true;
+        while (queue.Count > 0 && isSearching)
         {
-            Vector2Int.up,
-            Vector2Int.down,
-            Vector2Int.right,
-            Vector2Int.left,
-        };
-        foreach (var item in allSides)
-        {
+            var centertPoint = queue.Dequeue();
+            
+            print("Searching from:" + centertPoint); //todo delete log
+            CheckForEndpoint(centertPoint);
+            FindNeighbors(centertPoint);
+        }
+        print("Searching is finished."); //todo delete log
+    }
 
+    private void CheckForEndpoint(Waypoint center)
+    {
+        if (center.GridPoss == endPoint.GridPoss)
+        {
+            Debug.LogWarning("End point is reached.");
+            isSearching = false;
+
+        }
+    }
+
+    private void FindNeighbors(Waypoint from)
+    {
+        if (!isSearching) { return; }
+     
+        foreach (var direction in allDirections)
+        {
+            var neighborPos = from.GridPoss + direction;
             try
             {
-                grid[waypoint.GridPoss + item].ChangeColor(Color.blue);
+                QueingNeighbors(neighborPos);
             }
             catch (Exception)
             {
-
-                
             }
-            
-           
         }
-        
     }
 
-    
+    private void QueingNeighbors(Vector2Int neighborPos)
+    {
+        Waypoint neighbor = grid[neighborPos];
+        neighbor.ChangeColor(Color.blue); //todo take away color
+        if (neighbor.isExplored)
+        {
+            //do nothing
+        }
+        else
+        {
+            neighbor.isExplored = true;
+            queue.Enqueue(neighbor);
+            print("Queing :"+neighbor);//todo delete log
+        }
+    }
 
     private void PaintStartAndEnd()
     {
@@ -65,12 +106,9 @@ public class PathFinder : MonoBehaviour {
                 Debug.LogWarning(item.GridPoss + " is found in world more than once.");
             }
 
-           
+
         }
         print(grid.Count);
 
     }
-
-
-   
 }
