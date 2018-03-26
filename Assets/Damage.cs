@@ -7,6 +7,7 @@ public class Damage : MonoBehaviour {
 
     // Use this for initialization
     [SerializeField] int hitPoints=10;
+    [SerializeField] Transform explosionFX;
     bool isAlive=true;
     [SerializeField] ParticleSystem enemyExplosion;
     private void OnParticleCollision(GameObject other)
@@ -39,7 +40,8 @@ public class Damage : MonoBehaviour {
     private void StartDeathSequence()
     {
         Vector3 explosionPosition = transform.position + Vector3.up * 4.5f;
-        Instantiate(enemyExplosion, explosionPosition, Quaternion.identity);
+        Instantiate(enemyExplosion, explosionPosition, Quaternion.identity,explosionFX);
+        
         //Instantiate()
         Destroy(gameObject);
     }

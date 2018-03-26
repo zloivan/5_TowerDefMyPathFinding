@@ -150,5 +150,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints: 10
+  explosionFX: {fileID: 0}
   enemyExplosion: {fileID: 198844848296265006, guid: 44200ac962b909441aad71dc5cec121a,
     type: 2}
