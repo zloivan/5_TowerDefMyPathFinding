@@ -22,10 +22,13 @@ public class PathFinder : MonoBehaviour
 
     public List<Waypoint> GetPath()
     {
-        LoadBlocks();
-        PaintStartAndEnd();
-        BreathFirst();
-        BuildPath();
+        if (path.Count<1)
+        {
+            LoadBlocks();
+            PaintStartAndEnd();
+            BreathFirst();
+            BuildPath(); 
+        }
         return path;
     }
    
