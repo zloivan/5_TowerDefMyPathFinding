@@ -5,7 +5,8 @@ using UnityEngine;
 public class MouseDetection : MonoBehaviour {
 
     Color originalColor;
-    MeshRenderer renderer = new MeshRenderer();
+    MeshRenderer renderer;
+    [SerializeField] TowerScript tower;
     [SerializeField] Color highlightColor;
 	// Use this for initialization
 	void Start () {
@@ -23,6 +24,12 @@ public class MouseDetection : MonoBehaviour {
     private void OnMouseExit()
     {
         renderer.material.color = originalColor;
+    }
+
+    private void OnMouseDown()
+    {
+        Transform parantTower = FindObjectOfType<TowerBuilder>().transform;
+        Instantiate(tower,transform.position,Quaternion.identity,parantTower);
     }
     // Update is called once per frame
     void Update () {
