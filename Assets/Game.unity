@@ -472,7 +472,7 @@ Prefab:
         type: 2}
       propertyPath: enemyPosition
       value: 
-      objectReference: {fileID: 425409580}
+      objectReference: {fileID: 0}
     - target: {fileID: 1353157457710116, guid: c5045581e09e40741b46466fdd0d6729, type: 2}
       propertyPath: m_Name
       value: Tower (3)
@@ -481,7 +481,7 @@ Prefab:
         type: 2}
       propertyPath: enemyTransform
       value: 
-      objectReference: {fileID: 841937602}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c5045581e09e40741b46466fdd0d6729, type: 2}
   m_IsPrefabParent: 0
@@ -532,11 +532,6 @@ Prefab:
         type: 2}
       propertyPath: m_Text
       value: '[6,4]'
-      objectReference: {fileID: 0}
-    - target: {fileID: 114448282008100518, guid: 49a4d60801780ca40a2c5210ea1fd601,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49a4d60801780ca40a2c5210ea1fd601, type: 2}
@@ -638,6 +633,53 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1eda9f14166ca8a4a899b7b688bd44f7, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &217739105
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1024371129}
+    m_Modifications:
+    - target: {fileID: 4057439602378672, guid: e46b7bf76e786934aaebd0ea6d90ab2d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4057439602378672, guid: e46b7bf76e786934aaebd0ea6d90ab2d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4057439602378672, guid: e46b7bf76e786934aaebd0ea6d90ab2d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4057439602378672, guid: e46b7bf76e786934aaebd0ea6d90ab2d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4057439602378672, guid: e46b7bf76e786934aaebd0ea6d90ab2d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4057439602378672, guid: e46b7bf76e786934aaebd0ea6d90ab2d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4057439602378672, guid: e46b7bf76e786934aaebd0ea6d90ab2d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4057439602378672, guid: e46b7bf76e786934aaebd0ea6d90ab2d, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: e46b7bf76e786934aaebd0ea6d90ab2d, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &217739106 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4057439602378672, guid: e46b7bf76e786934aaebd0ea6d90ab2d,
+    type: 2}
+  m_PrefabInternal: {fileID: 217739105}
 --- !u!1001 &221662654
 Prefab:
   m_ObjectHideFlags: 0
@@ -849,11 +891,6 @@ Prefab:
       propertyPath: m_Text
       value: '[2,2]'
       objectReference: {fileID: 0}
-    - target: {fileID: 114448282008100518, guid: 49a4d60801780ca40a2c5210ea1fd601,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49a4d60801780ca40a2c5210ea1fd601, type: 2}
   m_IsPrefabParent: 0
@@ -987,6 +1024,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 285083598}
+  - component: {fileID: 285083599}
   m_Layer: 0
   m_Name: Towers
   m_TagString: Untagged
@@ -1014,6 +1052,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &285083599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 285083597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 104cb630181c4b4409c277291d4b7d72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &290024471
 Prefab:
   m_ObjectHideFlags: 0
@@ -1057,7 +1106,7 @@ Prefab:
         type: 2}
       propertyPath: enemyPosition
       value: 
-      objectReference: {fileID: 425409580}
+      objectReference: {fileID: 0}
     - target: {fileID: 1353157457710116, guid: c5045581e09e40741b46466fdd0d6729, type: 2}
       propertyPath: m_Name
       value: Tower (1)
@@ -1066,7 +1115,7 @@ Prefab:
         type: 2}
       propertyPath: enemyTransform
       value: 
-      objectReference: {fileID: 841937602}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c5045581e09e40741b46466fdd0d6729, type: 2}
   m_IsPrefabParent: 0
@@ -1423,11 +1472,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4f5345baede8a3042ac899c02192d2c3, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &425409580 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4534154795817426, guid: 90c3d0f236dbec64db2ae2aaf4f57522,
-    type: 2}
-  m_PrefabInternal: {fileID: 1300826174}
 --- !u!1 &426459420
 GameObject:
   m_ObjectHideFlags: 0
@@ -1657,6 +1701,11 @@ Prefab:
     - target: {fileID: 1719998926504602, guid: 49a4d60801780ca40a2c5210ea1fd601, type: 2}
       propertyPath: m_Name
       value: Waypoint:[2,0]
+      objectReference: {fileID: 0}
+    - target: {fileID: 102269702827569906, guid: 49a4d60801780ca40a2c5210ea1fd601,
+        type: 2}
+      propertyPath: m_Text
+      value: '[2,0]'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49a4d60801780ca40a2c5210ea1fd601, type: 2}
@@ -2015,7 +2064,7 @@ Prefab:
         type: 2}
       propertyPath: enemyTransform
       value: 
-      objectReference: {fileID: 841937602}
+      objectReference: {fileID: 0}
     - target: {fileID: 1353157457710116, guid: c5045581e09e40741b46466fdd0d6729, type: 2}
       propertyPath: m_Name
       value: Tower (2)
@@ -2973,16 +3022,6 @@ Prefab:
       propertyPath: m_Name
       value: Waypoint:[3,2]
       objectReference: {fileID: 0}
-    - target: {fileID: 102269702827569906, guid: 49a4d60801780ca40a2c5210ea1fd601,
-        type: 2}
-      propertyPath: m_Text
-      value: '[3,2]'
-      objectReference: {fileID: 0}
-    - target: {fileID: 114448282008100518, guid: 49a4d60801780ca40a2c5210ea1fd601,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49a4d60801780ca40a2c5210ea1fd601, type: 2}
   m_IsPrefabParent: 0
@@ -3103,11 +3142,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4f5345baede8a3042ac899c02192d2c3, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &841937602 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4298654152790684, guid: 90c3d0f236dbec64db2ae2aaf4f57522,
-    type: 2}
-  m_PrefabInternal: {fileID: 1300826174}
 --- !u!1001 &943173127
 Prefab:
   m_ObjectHideFlags: 0
@@ -3251,7 +3285,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 841937602}
+  - {fileID: 217739106}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3267,7 +3301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SecondsToSpawn: 2
-  enemy: {fileID: 114100696371940118, guid: 90c3d0f236dbec64db2ae2aaf4f57522, type: 2}
+  enemy: {fileID: 114718350419719266, guid: e46b7bf76e786934aaebd0ea6d90ab2d, type: 2}
 --- !u!4 &1039227943 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4254489583083404, guid: 4f5345baede8a3042ac899c02192d2c3,
@@ -3397,7 +3431,7 @@ Prefab:
         type: 2}
       propertyPath: enemyTransform
       value: 
-      objectReference: {fileID: 841937602}
+      objectReference: {fileID: 0}
     - target: {fileID: 1353157457710116, guid: c5045581e09e40741b46466fdd0d6729, type: 2}
       propertyPath: m_Name
       value: Tower (4)
@@ -3682,7 +3716,7 @@ Prefab:
         type: 2}
       propertyPath: enemyTransform
       value: 
-      objectReference: {fileID: 841937602}
+      objectReference: {fileID: 0}
     - target: {fileID: 1353157457710116, guid: c5045581e09e40741b46466fdd0d6729, type: 2}
       propertyPath: m_Name
       value: Tower (6)
@@ -3735,57 +3769,6 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4f5345baede8a3042ac899c02192d2c3, type: 2}
-  m_IsPrefabParent: 0
---- !u!1001 &1300826174
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1024371129}
-    m_Modifications:
-    - target: {fileID: 4298654152790684, guid: 90c3d0f236dbec64db2ae2aaf4f57522, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4298654152790684, guid: 90c3d0f236dbec64db2ae2aaf4f57522, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4298654152790684, guid: 90c3d0f236dbec64db2ae2aaf4f57522, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4298654152790684, guid: 90c3d0f236dbec64db2ae2aaf4f57522, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4298654152790684, guid: 90c3d0f236dbec64db2ae2aaf4f57522, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4298654152790684, guid: 90c3d0f236dbec64db2ae2aaf4f57522, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4298654152790684, guid: 90c3d0f236dbec64db2ae2aaf4f57522, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4298654152790684, guid: 90c3d0f236dbec64db2ae2aaf4f57522, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114711720781382038, guid: 90c3d0f236dbec64db2ae2aaf4f57522,
-        type: 2}
-      propertyPath: explosionFX
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1109418628512942, guid: 90c3d0f236dbec64db2ae2aaf4f57522, type: 2}
-      propertyPath: m_Name
-      value: Enemy
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 90c3d0f236dbec64db2ae2aaf4f57522, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1316013980
 Prefab:
@@ -4116,7 +4099,7 @@ Prefab:
         type: 2}
       propertyPath: enemyTransform
       value: 
-      objectReference: {fileID: 841937602}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c5045581e09e40741b46466fdd0d6729, type: 2}
   m_IsPrefabParent: 0
@@ -4331,7 +4314,7 @@ Prefab:
         type: 2}
       propertyPath: enemyTransform
       value: 
-      objectReference: {fileID: 841937602}
+      objectReference: {fileID: 0}
     - target: {fileID: 1353157457710116, guid: c5045581e09e40741b46466fdd0d6729, type: 2}
       propertyPath: m_Name
       value: Tower (5)

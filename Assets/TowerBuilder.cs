@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyAfterAwake : MonoBehaviour {
+public class TowerBuilder : MonoBehaviour {
 
 	// Use this for initialization
-	void Start ()
-    {
-        Destroy(gameObject,2f);
+	void Start () {
+		
 	}
 	
 	// Update is called once per frame
-	
+	void Update () {
+		
+	}
 }
