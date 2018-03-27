@@ -8,7 +8,8 @@ public class Waypoint : MonoBehaviour {
     public bool isExplored=false;
     public Waypoint exploredBy;
     const int gridSize = 10;
-    [SerializeField] Color colorForExplored;
+ 
+
    
     public int GridSize
     {
@@ -26,18 +27,11 @@ public class Waypoint : MonoBehaviour {
                 );
         }
     }
-    // Update is called once per frame
+    
     void Update ()
     {
-        //if (isExplored)
-        //{
-        //    this.ChangeColor(colorForExplored);
-        //}
+       
 	}
 
-    internal void ChangeColor(Color color)
-    {
-        MeshRenderer topMeshRenderer = transform.Find("Top").GetComponent<MeshRenderer>();
-        topMeshRenderer.material.color = color;
-    }
+    
 }

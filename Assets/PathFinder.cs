@@ -25,7 +25,7 @@ public class PathFinder : MonoBehaviour
         if (path.Count<1)
         {
             LoadBlocks();
-            PaintStartAndEnd();
+            
             BreathFirst();
             BuildPath(); 
         }
@@ -99,11 +99,7 @@ public class PathFinder : MonoBehaviour
         }
     }
 
-    private void PaintStartAndEnd()
-    {
-        grid[startPoint.GridPoss].ChangeColor(Color.green);
-        grid[endPoint.GridPoss].ChangeColor(Color.red);
-    }
+    
 
     private void LoadBlocks()
     {
